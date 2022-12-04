@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import ProductsList from './components/ProductsList';
+import styled from 'styled-components';
+import { ModalProvider, BaseModalBackground } from 'styled-react-modal';
+import StyledModalButton from './components/styles/StyledModal.styled';
+
+const FadingBackground = styled(BaseModalBackground)`
+	opacity: ${props => props.opacity};
+	transition: all 0.3s ease-in-out;
+`;
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<>
+			<ProductsList />
+			<ModalProvider backgroundComponent={FadingBackground}>
+				<div className='App'>
+					<h3>Chcesz dodać produkt?</h3>
+					<StyledModalButton />
+				</div>
+			</ModalProvider>
+		</>
+	);
 }
 
 export default App;
